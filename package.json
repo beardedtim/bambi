@@ -1,0 +1,29 @@
+{
+  "name": "bambi",
+  "version": "0.0.0-development",
+  "description": "A basic functional utility belt",
+  "main": "modules/index.js",
+  "author": "Tim Roberts <timiroberts@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "commitizen": "^2.9.6",
+    "cz-conventional-changelog": "^2.0.0",
+    "prettier-standard": "^6.0.0",
+    "semantic-release": "^8.0.0",
+    "semantic-release-cli": "^3.0.3",
+    "standard": "^10.0.3"
+  },
+  "scripts": {
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
+    "commit": "git-cz"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/beardedtim/bambi.git"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  }
+}
