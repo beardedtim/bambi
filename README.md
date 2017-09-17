@@ -1,6 +1,10 @@
-# babmi
+# bambi
 
 > Like a ram, but softer
+
+![Grrr....Serious](https://www.disneyclips.com/imagesnewb5/images/bambi_angry.gif)
+
+[![Build Status](https://travis-ci.org/beardedtim/bambi.svg?branch=master)](https://travis-ci.org/beardedtim/bambi)
 
 ## API
 
