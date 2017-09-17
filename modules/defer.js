@@ -1,5 +1,12 @@
 import curry from './curry'
 
-const defer = curry((args, fn) => () => fn.apply(null, args))
+/**
+ * Defers calling a function with arguments
+ * 
+ * @param {Array<*>} args - The array of arguments to pass 
+ * @param {Function} fn - The function to call
+ * @returns {Function} - () -> fn(...args)
+ */
+const defer = (args, fn) => () => fn.apply(null, args)
 
-export default defer
+export default curry(defer)

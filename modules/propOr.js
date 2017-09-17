@@ -1,9 +1,16 @@
 import curry from './curry'
 import prop from './prop'
 
-const propOr = curry((def, key, obj) => {
+/**
+ * 
+ * @param {*} def - Default value 
+ * @param {(strinng|number)} key - The key to grab 
+ * @param {Object} obj - The data to grab from
+ * @return {*} 
+ */
+const propOr = (def, key, obj) => {
   const val = prop(key, obj)
   return val === undefined ? def : val
-})
+}
 
-export default propOr
+export default curry(propOr)

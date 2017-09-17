@@ -1,7 +1,15 @@
 import curry from './curry'
 import prop from './prop'
 
-const path = curry((keys, obj) => {
+/**
+ * Walks down a path of an object. Returns 
+ * undefined early if not found
+ * 
+ * @param {Array<string|number>} keys - The path to the object
+ * @param {Object|Array<*>} obj - The data to walk
+ * @return {*} - The value or undefined 
+ */
+const path = (keys, obj) => {
   let state = prop(keys[0], obj)
 
   for(let i = 1; i < keys.length; i++) {
@@ -13,6 +21,6 @@ const path = curry((keys, obj) => {
   }
 
   return state
-})
+}
 
-export default path
+export default curry(path)

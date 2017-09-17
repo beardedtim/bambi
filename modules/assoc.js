@@ -1,6 +1,19 @@
 import curry from './curry'
 
-const assoc = curry((value, key, obj) => {
+/**
+ * Associates a value at a key, shallow copies rest
+ * 
+ * @example
+ *  
+ *  assoc(1, 'age', { age: 2, name: 'Tim' }) === { age: 1, name: 'Tim' }
+ * 
+ *
+ * @param {*} value - The value to associate
+ * @param {string} key - The key to associate
+ * @param {Object} obj - The structure to associate with
+ * @return {Object}
+ */
+const assoc = (value, key, obj) => {
   let result = {}
   for (let k in obj) {
     result[k] = obj[k]
@@ -9,6 +22,6 @@ const assoc = curry((value, key, obj) => {
   result[key] = value
 
   return result
-})
+}
 
-export default assoc
+export default curry(assoc)

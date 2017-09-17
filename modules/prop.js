@@ -1,5 +1,12 @@
 import curry from './curry'
 
-const prop = curry((key, obj) => obj[key])
+/**
+ * Grabs a value from an object
+ * 
+ * @param {string} key - The key to grab 
+ * @param {Object} obj - The data structure to grab from
+ * @return {*}
+ */
+const prop = (key, obj) => obj[key]
 
-export default prop
+export default curry(prop)
