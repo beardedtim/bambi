@@ -1,16 +1,14 @@
 import curry from './curry'
 
-const mapArray = (fn, list) => list.map(fn)
-
-const map = (fn, list) => {
-  if (Array.isArray(list)) {
-    return mapArray(fn, list)
+const map = (fn, iterator) => {
+  if ('map' in iterator) {
+    return iterator.map(fn)
   }
 
   const result = {}
 
-  for(let k in list) {
-    result[k] = fn(list[k])
+  for(let k in iterator) {
+    result[k] = fn(iterator[k])
   }
 
   return result
