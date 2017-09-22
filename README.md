@@ -10,15 +10,19 @@
 
 * [always](#always)
 * [assoc](#assoc)
+* [compose](#compose)
 * [curry](#curry)
 * [defer](#defer)
 * [dissoc](#dissoc)
+* [filter](#filter)
 * [identity](#identity)
 * [map](#map)
 * [path](#path)
 * [pathOr](#pathOr)
+* [pipe](#pipe)
 * [prop](#prop)
 * [propOr](#propOr)
+* [reduce](#reduce)
 
 ### always
 
