@@ -1,6 +1,13 @@
 import curry from './curry'
 import prop from './prop'
 
+/**
+ * Filters a data structure's values by a predicate
+ *
+ * @param {Function} fn - Predicate function to tell if a value should be included 
+ * @param {Iterator} iterator - The data structure to walk through
+ * @return {(Object|Array<*>)} - The filtered values
+ */
 const filter = (fn, iterator) => {
   if ('filter' in iterator) {
     return iterator.filter(fn)
