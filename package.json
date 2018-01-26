@@ -1,6 +1,6 @@
 {
   "name": "bambi",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "description": "A basic functional utility belt",
   "main": "index.js",
   "js:next": "modules/index.js",
