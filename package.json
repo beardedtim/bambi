@@ -16,7 +16,9 @@
     "prettier-standard": "^6.0.0",
     "semantic-release": "^8.0.0",
     "semantic-release-cli": "^3.0.3",
-    "standard": "^10.0.3"
+    "standard": "^10.0.3",
+    "babel-jest": "^21.0.2",
+    "jest": "^21.1.0"
   },
   "scripts": {
     "semantic-release": "semantic-release pre && npm publish && semantic-release post",
@@ -35,9 +37,7 @@
     }
   },
   "dependencies": {
-    "@std/esm": "^0.10.0",
-    "babel-jest": "^21.0.2",
-    "jest": "^21.1.0"
+    "@std/esm": "^0.10.0"
   },
   "@std/esm": {
     "esm": "js",

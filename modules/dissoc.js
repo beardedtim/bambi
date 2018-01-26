@@ -16,10 +16,11 @@ import curry from './curry'
  */
 const dissoc = (key, obj) => {
   let result = {}
+
   for (let k in obj) {
     result[k] = obj[k]
   }
-  
+
   delete result[key]
 
   return result
