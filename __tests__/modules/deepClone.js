@@ -22,7 +22,6 @@ describe('deepClone', () => {
     const c = [b]
 
     const cloned = deepClone(c)
-    console.log(c, cloned)
     expect(cloned !== c)
     expect(cloned[0] !== c[0])
     expect(cloned[0][0] !== c[0][0])

@@ -10,13 +10,16 @@
 
 * [always](#always)
 * [assoc](#assoc)
+* [clone](#clone)
 * [compose](#compose)
 * [curry](#curry)
+* [deepClone](#deepClone)
 * [defer](#defer)
 * [dissoc](#dissoc)
 * [filter](#filter)
 * [identity](#identity)
 * [map](#map)
+* [not](#not)
 * [path](#path)
 * [pathOr](#pathOr)
 * [pipe](#pipe)
@@ -55,6 +58,50 @@ newObj.name // 'Tim'
 
 Returns a shallow copy of the object, with the key associated with the value
 
+### clone
+
+```
+clone: a -> a
+```
+
+```
+const arr = [1, 2, 3]
+const cloned = clone(arr) // [1, 2, 3]
+
+cloned === arr // false
+cloned[0] === arr[0] // true
+
+const obj = { k: v }
+const clonedObj = clone(obj)
+
+clonedObj === obj // false
+clonedObj.k === obj.k // true
+```
+
+Performs a shallow clone of an array or object.
+
+### compose
+
+```
+compose: (a -> b) -> (b -> c) -> (a -> c)
+```
+
+```
+const getName = data => data.name
+const uppercase = str => str.toUpperCase()
+
+const getUpperCaseName = compose(
+  uppercase,
+  getName
+)
+
+const data = { name: 'Tim' }
+
+getUpperCaseName(data) // 'TIM'
+```
+
+Composes functions together into a single unary function, calling the passed in functions right-to-left order.
+
 ### curry
 
 
@@ -70,6 +117,28 @@ curried()(1)()(2) // 3
 ```
 
 Returns a wrapped version of the passed in function, returning functions until all of the arguments are given.
+
+### deepClone
+
+```
+deepClone: a -> a
+```
+
+```
+const arr = [{k: v}]
+const cloned = deepClone(arr)
+
+cloned === arr // false
+cloned[0] === arr[0] // false
+
+const obj = { k: { k: v} }
+const clonedObj = deepClone(obj)
+
+clonedObj === obj // false
+clonedObj.k === obj.k // false
+```
+
+Performs a deep cloning of an object, recursively until getting to primitives.
 
 ### defer
 
@@ -143,6 +212,27 @@ map(fn, obj) // { a: 2, b: 4, c: 6 }
 ```
 
 Iterators over a data structures items and applies the passed function to each
+
+
+### not
+
+```
+not: (a -> b) -> args -> Boolean
+```
+
+```
+const fn = () => false
+const notFn = not(fn)
+
+notFn() // true
+
+const otherFn = () => true
+const notOther = not(otherFn)
+
+notOther() // false
+```
+
+Returns a function that returns the opposite Boolean value as the passed in function
 
 ### path
 
