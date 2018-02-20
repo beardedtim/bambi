@@ -5,7 +5,7 @@ describe('assoc', () => {
     const key = 'name'
     const value = {}
     const obj = { name: 'John' }
-    const result = assoc(value, key, obj)
+    const result = assoc(key, value, obj)
 
     expect(result).toEqual({
       name: value
@@ -16,7 +16,7 @@ describe('assoc', () => {
     const key = 'name'
     const value = {}
     const obj = { name: 'John' }
-    const result = assoc(value)(key)(obj)
+    const result = assoc(key)(value)(obj)
 
     expect(result).toEqual({
       name: value
