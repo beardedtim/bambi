@@ -8,12 +8,12 @@ import curry from './curry'
  *  assoc(1, 'age', { age: 2, name: 'Tim' }) === { age: 1, name: 'Tim' }
  * 
  *
- * @param {*} value - The value to associate
  * @param {string} key - The key to associate
+ * @param {*} value - The value to associate
  * @param {Object} obj - The structure to associate with
  * @return {Object}
  */
-const assoc = (value, key, obj) => {
+const assoc = (key, value, obj) => {
   let result = {}
 
   for (let k in obj) {
