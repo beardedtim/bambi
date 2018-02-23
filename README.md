@@ -6,6 +6,8 @@
 
 [![Build Status](https://travis-ci.org/beardedtim/bambi.svg?branch=master)](https://travis-ci.org/beardedtim/bambi)
 
+[![Coverage Status](https://coveralls.io/repos/github/beardedtim/bambi/badge.svg?branch=master)](https://coveralls.io/github/beardedtim/bambi?branch=master)
+
 ## API
 
 * [always](#always)
