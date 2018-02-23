@@ -26,4 +26,15 @@ describe('deepClone', () => {
     expect(cloned[0] !== c[0])
     expect(cloned[0][0] !== c[0][0])
   })
+
+  test('returns values as is if not object or array', () => {
+    const data = {
+      name: 'Tim'
+    }
+
+    const cloned = deepClone(data)
+
+    expect(cloned !== data)
+    expect(cloned.name === data.name)
+  })
 })

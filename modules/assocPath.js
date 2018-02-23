@@ -1,6 +1,5 @@
 import curry from './curry'
 import clone from './clone'
-import cloneType from './cloneType'
 import assoc from './assoc'
 import prop from './prop'
 
