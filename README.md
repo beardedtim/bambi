@@ -13,14 +13,23 @@
 * [clone](#clone)
 * [compose](#compose)
 * [curry](#curry)
+* [dec](#dec)
 * [deepClone](#deepClone)
+* [defaultTo](#defaultTo)
 * [defer](#defer)
 * [dissoc](#dissoc)
+* [F](#f)
 * [filter](#filter)
+* [gt](#gt)
+* [gte](#gte)
 * [identity](#identity)
+* [ifElse](#ifElse)
+* [inc](#inc)
 * [lens](#lens)
 * [lensPath](#lensPath)
 * [lensProp](#lensProp)
+* [lt](#lt)
+* [lte](#lte)
 * [map](#map)
 * [not](#not)
 * [path](#path)
@@ -30,6 +39,8 @@
 * [propOr](#propOr)
 * [reduce](#reduce)
 * [set](#set)
+* [T](#t)
+* [uppercase](#uppercase)
 * [view](#view)
 * [zip](#zip)
 
@@ -124,6 +135,18 @@ curried()(1)()(2) // 3
 
 Returns a wrapped version of the passed in function, returning functions until all of the arguments are given.
 
+### dec
+
+```
+dec: number -> number
+```
+
+```
+dec(1) // 0
+```
+
+Returns the number passed in minus 1
+
 ### deepClone
 
 ```
@@ -145,6 +168,23 @@ clonedObj.k === obj.k // false
 ```
 
 Performs a deep cloning of an object, recursively until getting to primitives.
+
+### defaultTo
+
+```
+defaultTo: a -> b -> a | b
+```
+
+```
+const value = true
+const other = undefined
+const defaulted = 'tim'
+
+defaulted(value) // true
+defaulted(other) // 'tim'
+```
+
+Returns the passed in value if that value is not `null` or `undefined`. Returns the default value is not
 
 ### defer
 
@@ -183,6 +223,47 @@ obj.name // 'Tim'
 
 Returns a shallow copy, with the given key deleted
 
+### gt
+
+```
+gt: number -> number -> boolean
+```
+
+```
+const a = 2
+const b = 1
+
+gt(a, b) // true
+gt(b, a) // false
+```
+
+### gte
+
+```
+gte: number -> number -> boolean
+```
+
+```
+const a = 2
+const b = 1
+
+gte(a, b) // true
+gte(a, a) // true
+gte(b, a) // false
+```
+
+### F
+
+```
+F: () -> boolean
+```
+
+```
+F() // false
+```
+
+Returns `false`
+
 ### identity
 
 
@@ -198,6 +279,41 @@ id === obj
 ```
 
 Returns the passed in value
+
+### ifElse
+
+```
+ifElse: (a -> boolean) -> (a -> *) -> (a -> *) -> a -> *
+```
+
+```
+const hasAge = data => 'age' in data
+const double = num => num * 2
+const defaultAge = () => 30
+
+const getAge = ifElse(
+  hasAge,
+  data => double(data.age),
+  defaultAge
+)
+
+getAge({}) // 30
+getAge({ age: 1 }) // 1 
+```
+
+Returns the value of the second argument if the first function returns truthy, returns the third argument if not
+
+### inc
+
+```
+inc: number -> number
+```
+
+```
+inc(1) // 2
+```
+
+Returns the number plus one
 
 ### lens
 
@@ -239,6 +355,35 @@ lensProp: string | number -> Lens
 const data = { name: 'Tim' }
 const nameLens = lensProp('name')
 const value = view(nameLens, data) // 'Tim'
+```
+
+### lt
+
+```
+lt: number -> number -> boolean
+```
+
+```
+const a = 1
+const b = 2
+lt(a, b) // true
+lt(b, a) // false
+```
+
+Returns true if the first value is less than the second, false if otherwise
+
+### lte
+
+```
+lte: number -> number -> boolean
+```
+
+```
+const a = 1
+const b = 2
+lte(a, b) // true
+lte(a, a) // true
+lte(b, a) // false
 ```
 
 ### map
@@ -362,6 +507,18 @@ age // 'default'
 
 Returns the value at the prop or the default
 
+### T
+
+```
+T: () -> boolean
+```
+
+```
+T() // true
+```
+
+Returns `true`
+
 ### set
 
 ```
@@ -372,6 +529,17 @@ set: Lens -> * -> a -> a
 const data = { name: 'Tim', age: 29 }
 const nameLens = lensProp('name')
 const updated = set(nameLens, 'Joh', data) // { name: 'John', age: 29 }
+```
+
+### uppercase
+
+```
+uppercase: string -> string
+```
+
+```
+const name = 'tim'
+uppercase(name) // 'TIM'
 ```
 
 ### view
