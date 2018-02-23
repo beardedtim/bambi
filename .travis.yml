@@ -7,8 +7,9 @@ notifications:
 node_js:
   - '8'
 scripts:
-  - yarn test
+  - yarn coverage
 after_success:
+  - yarn coverage
   - yarn semantic-release
 branches:
   except:
