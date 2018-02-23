@@ -18,6 +18,9 @@
 * [dissoc](#dissoc)
 * [filter](#filter)
 * [identity](#identity)
+* [lens](#lens)
+* [lensPath](#lensPath)
+* [lensProp](#lensProp)
 * [map](#map)
 * [not](#not)
 * [path](#path)
@@ -26,6 +29,9 @@
 * [prop](#prop)
 * [propOr](#propOr)
 * [reduce](#reduce)
+* [set](#set)
+* [view](#view)
+* [zip](#zip)
 
 ### always
 
@@ -193,6 +199,48 @@ id === obj
 
 Returns the passed in value
 
+### lens
+
+```
+lens: (a -> *) -> (* -> a) -> Lens
+```
+
+```
+const data = { name: 'Tim', age: 29 }
+const nameLens = lens(
+  prop('name'),
+  assoc('name')
+) // { get: prop('name'), set: assoc('name') }
+```
+
+Returns a `Bambi`-style `lens` object for using in `set`, `over`, and `view`.
+
+### lensPath
+
+```
+lensPath: [string | number] -> Lens
+```
+
+```
+const data = { name: 'Tim', location: { state: 'TN' } }
+const stateLens = lensPath(['location', 'state')
+const value = view(stateLens, data) // 'TN'
+```
+
+Returns a `Babmi`-style `lens` at the given path
+
+### lensProp
+
+```
+lensProp: string | number -> Lens
+```
+
+```
+const data = { name: 'Tim' }
+const nameLens = lensProp('name')
+const value = view(nameLens, data) // 'Tim'
+```
+
 ### map
 
 
@@ -211,7 +259,7 @@ const obj = { a: 1, b: 2, c: 3 }
 map(fn, obj) // { a: 2, b: 4, c: 6 }
 ```
 
-Iterators over a data structures items and applies the passed function to each
+Iterates over a data structures items and applies the passed function to each
 
 
 ### not
@@ -233,6 +281,20 @@ notOther() // false
 ```
 
 Returns a function that returns the opposite Boolean value as the passed in function
+
+### over
+
+```
+over: Lens -> (a -> b) -> * -> *
+```
+
+```
+const data = { name: 'Tim', age: 29 }
+const nameLens = lensProp('name')
+const updated = over(nameLens, oldName => 'John', data) // { name: 'John', age: 29 }
+```
+
+Returns the data structure passed in, with the value at the `lens` updated
 
 ### path
 
@@ -299,3 +361,39 @@ age // 'default'
 ```
 
 Returns the value at the prop or the default
+
+### set
+
+```
+set: Lens -> * -> a -> a
+```
+
+```
+const data = { name: 'Tim', age: 29 }
+const nameLens = lensProp('name')
+const updated = set(nameLens, 'Joh', data) // { name: 'John', age: 29 }
+```
+
+### view
+
+```
+view: Lens -> a -> *
+```
+
+```
+const data = { name: 'Tim' }
+const nameLens = lensProp('name')
+const value = view(nameLens, data) // 'Tim'
+```
+
+### zip
+
+```
+zip: (a -> b -> c) -> [a] -> [b] -> [c]
+```
+
+```
+const list1 = [1, 2, 3]
+const list2 = [1, 1, 1]
+const zipped = zip(add, list1, list2) // [2, 3, 4]
+```
