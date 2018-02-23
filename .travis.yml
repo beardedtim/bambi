@@ -9,6 +9,7 @@ node_js:
 scripts:
   - yarn coverage
 after_success:
+  - yarn coverage
   - yarn semantic-release
 branches:
   except:
