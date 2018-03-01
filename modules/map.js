@@ -1,4 +1,6 @@
+import fl from 'fantasy-land'
 import curry from './curry'
+import isFantasy from './isFantasy'
 import prop from './prop'
 
 /**
@@ -16,6 +18,10 @@ import prop from './prop'
  * @return {Iterator} - The mapped data structure
  */
 const map = (fn, iterator) => {
+  if (isFantasy('map',  iterator)) {
+    return iterator[fl.map](fn)
+  }
+
   if ('map' in iterator) {
     return iterator.map(fn)
   }

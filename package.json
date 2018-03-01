@@ -38,7 +38,8 @@
     }
   },
   "dependencies": {
-    "@std/esm": "^0.10.0"
+    "@std/esm": "^0.10.0",
+    "fantasy-land": "^3.5.0"
   },
   "@std/esm": {
     "esm": "js",

@@ -1,4 +1,6 @@
+import fl from 'fantasy-land'
 import curry from './curry'
+import isFantasy from './isFantasy'
 import prop from './prop'
 
 /**
@@ -9,6 +11,10 @@ import prop from './prop'
  * @return {(Object|Array<*>)} - The filtered values
  */
 const filter = (fn, iterator) => {
+  if (isFantasy('filter', iterator)) {
+    return iterator[fl.filter](fn)
+  }
+
   if ('filter' in iterator) {
     return iterator.filter(fn)
   }
