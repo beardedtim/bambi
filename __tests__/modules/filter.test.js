@@ -1,3 +1,4 @@
+import fl from 'fantasy-land'
 import filter from '../../modules/filter'
 
 describe('filter', () => {
@@ -25,5 +26,18 @@ describe('filter', () => {
     expect(result).toEqual({
       b: 2, c: 4
     })
+  })
+
+  test('calls the fantasy-land key if iterable contains it', () => {
+    const m = jest.fn()
+    const fn = jest.fn()
+
+    const it = {
+      [fl.filter]: m
+    }
+
+    filter(fn, it)
+
+    expect(m).toHaveBeenCalledWith(fn)
   })
 })

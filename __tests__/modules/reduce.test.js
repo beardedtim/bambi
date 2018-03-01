@@ -1,3 +1,4 @@
+import fl from 'fantasy-land'
 import reduce from '../../modules/reduce'
 
 describe('identity', () => {
@@ -26,5 +27,18 @@ describe('identity', () => {
     const result = reduce(fn, start, obj)
 
     expect(result).toEqual([2, 4, 6])
+  })
+
+  test('calls the fantasy-land key if iterable contains it', () => {
+    const m = jest.fn()
+    const fn = jest.fn()
+
+    const it = {
+      [fl.reduce]: m
+    }
+
+    reduce(fn, 1, it)
+
+    expect(m).toHaveBeenCalledWith(fn, 1)
   })
 })

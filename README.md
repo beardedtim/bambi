@@ -14,6 +14,7 @@
 * [assoc](#assoc)
 * [clone](#clone)
 * [compose](#compose)
+* [contains](#contains)
 * [curry](#curry)
 * [dec](#dec)
 * [deepClone](#deepClone)
@@ -120,6 +121,20 @@ getUpperCaseName(data) // 'TIM'
 ```
 
 Composes functions together into a single unary function, calling the passed in functions right-to-left order.
+
+### contains
+
+```
+contains: (string|number) -> a -> boolean
+```
+
+```
+contains('name', {name: null}) // true
+contains('name', {}) // false
+
+contains(0, [1, 2, 3]) // true
+contains(1, []) // false
+```
 
 ### curry
 

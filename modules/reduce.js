@@ -1,4 +1,6 @@
+import fl from 'fantasy-land'
 import curry from './curry'
+import isFantasy from './isFantasy'
 import prop from './prop'
 
 /**
@@ -11,6 +13,10 @@ import prop from './prop'
  * @return {*} - The reduced value
  */
 const reduce = (fn, start, iterator) => {
+  if (isFantasy('reduce', iterator)) {
+    return iterator[fl.reduce](fn, start)
+  }
+
   if ('reduce' in iterator) {
     return iterator.reduce(fn, start)
   }
