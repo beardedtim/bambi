@@ -121,6 +121,27 @@ getUpperCaseName(data) // 'TIM'
 
 Composes functions together into a single unary function, calling the passed in functions right-to-left order.
 
+### cond
+
+```
+cond: ([[(a -> boolean), (a -> b)]]) -> a -> b
+```
+
+```
+const conditions = cond([
+  [obj => obj.name === 'tim', obj => obj.name.toUpperCase()],
+  [obj => obj.name === 'john', obj => obj.name.split('').reverse().join('')]
+])
+
+const tim = { name: 'tim' }
+const john =  { name: 'john' }
+
+conditions(tim) // 'TIM'
+conditions(john) // 'NHOJ'
+```
+
+Applies the transformation function given at the first predicate that returns truthy
+
 ### curry
 
 
