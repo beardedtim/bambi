@@ -42,6 +42,7 @@
 * [reduce](#reduce)
 * [set](#set)
 * [T](#t)
+* [uniq](#uniq)
 * [uppercase](#uppercase)
 * [view](#view)
 * [zip](#zip)
@@ -553,6 +554,21 @@ const data = { name: 'Tim', age: 29 }
 const nameLens = lensProp('name')
 const updated = set(nameLens, 'Joh', data) // { name: 'John', age: 29 }
 ```
+
+Sets the value at the location pointed to by the lens.
+
+### uniq
+
+```
+uniq: Array<T> -> Array<T>
+```
+
+```
+const arr = [1, 2, 3, 1]
+uniq(arr) //  [1, 2, 3]
+```
+
+Returns a copy of the passed in array, with only unique values.
 
 ### uppercase
 
