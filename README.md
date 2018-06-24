@@ -10,8 +10,10 @@
 
 ## API
 
+* [adjust](#adjust)
 * [always](#always)
 * [assoc](#assoc)
+* [both](#both)
 * [clone](#clone)
 * [compose](#compose)
 * [curry](#curry)
@@ -27,6 +29,7 @@
 * [identity](#identity)
 * [ifElse](#ifElse)
 * [inc](#inc)
+* [isNil](#isNil)
 * [lens](#lens)
 * [lensPath](#lensPath)
 * [lensProp](#lensProp)
@@ -47,13 +50,27 @@
 * [view](#view)
 * [zip](#zip)
 
+
+### adjust
+
+```
+adjust: (a -> b) -> Int -> [a] -> [b]
+```
+
+```js
+const fn = add(1)
+const index = 1
+const list = [0, 0, 0]
+adjust(fn, index, list) // [0, 1, 0]
+```
+
 ### always
 
 ```
 always: a -> () -> a
 ```
 
-```
+```js
 const obj = {}
 
 always(obj)() === obj
@@ -67,7 +84,7 @@ Returns a function that always returns the passed in value.
 assoc: a -> string -> Obj -> Obj
 ```
 
-```
+```js
 const obj = { name: 'Tim', age: 28 }
 const birthdayAge = 29
 const newObj = assoc(birthdayAge, 'age', obj)
@@ -78,13 +95,34 @@ newObj.name // 'Tim'
 
 Returns a shallow copy of the object, with the key associated with the value
 
+### both
+
+```
+both: (a -> Boolean) -> (a -> Boolean) -> a -> Boolean
+```
+
+```js
+const isTim = ({ name }) => name === 'Tim'
+const isAdmin = ({ level }) => level === 'admin'
+
+const person = {
+  name: 'Tim',
+  level: 'admin'
+}
+
+const canView = both(isTim, isAdmin)
+
+canView(person) // true
+canView({ name: 'John' }) // false
+```
+
 ### clone
 
 ```
 clone: a -> a
 ```
 
-```
+```js
 const arr = [1, 2, 3]
 const cloned = clone(arr) // [1, 2, 3]
 
@@ -106,7 +144,7 @@ Performs a shallow clone of an array or object.
 compose: (a -> b) -> (b -> c) -> (a -> c)
 ```
 
-```
+```js
 const getName = data => data.name
 const uppercase = str => str.toUpperCase()
 
@@ -128,7 +166,7 @@ Composes functions together into a single unary function, calling the passed in 
 cond: ([[(a -> boolean), (a -> b)]]) -> a -> b
 ```
 
-```
+```js
 const conditions = cond([
   [obj => obj.name === 'tim', obj => obj.name.toUpperCase()],
   [obj => obj.name === 'john', obj => obj.name.split('').reverse().join('')]
@@ -150,7 +188,7 @@ Applies the transformation function given at the first predicate that returns tr
 curry: ((a, b) -> c) -> (a -> b -> c)
 ```
 
-```
+```js
 const fn = (a, b) => a + b
 const curried = curry(fn)
 
@@ -165,7 +203,7 @@ Returns a wrapped version of the passed in function, returning functions until a
 dec: number -> number
 ```
 
-```
+```js
 dec(1) // 0
 ```
 
@@ -177,7 +215,7 @@ Returns the number passed in minus 1
 deepClone: a -> a
 ```
 
-```
+```js
 const arr = [{k: v}]
 const cloned = deepClone(arr)
 
@@ -199,7 +237,7 @@ Performs a deep cloning of an object, recursively until getting to primitives.
 defaultTo: a -> b -> a | b
 ```
 
-```
+```js
 const value = true
 const other = undefined
 const defaulted = 'tim'
@@ -217,7 +255,7 @@ Returns the passed in value if that value is not `null` or `undefined`. Returns 
 defer: Array<a> -> (a -> b) -> () -> b
 ```
 
-```
+```js
 const fn = a => console.log(a)
 const defered = defer([1], fn)
 const value = defered()
@@ -234,7 +272,7 @@ Returns a function that will apply a function with the given arguments
 dissoc: string -> Obj -> Obj
 ```
 
-```
+```js
 const obj = { name: 'Tim', age: 28 }
 const newObj = dissoc('name', obj)
 
@@ -253,7 +291,7 @@ Returns a shallow copy, with the given key deleted
 gt: number -> number -> boolean
 ```
 
-```
+```js
 const a = 2
 const b = 1
 
@@ -267,7 +305,7 @@ gt(b, a) // false
 gte: number -> number -> boolean
 ```
 
-```
+```js
 const a = 2
 const b = 1
 
@@ -282,7 +320,7 @@ gte(b, a) // false
 F: () -> boolean
 ```
 
-```
+```js
 F() // false
 ```
 
@@ -295,7 +333,7 @@ Returns `false`
 identity: a -> a
 ```
 
-```
+```js
 const obj = {}
 const id = identity(obj)
 
@@ -310,7 +348,7 @@ Returns the passed in value
 ifElse: (a -> boolean) -> (a -> *) -> (a -> *) -> a -> *
 ```
 
-```
+```js
 const hasAge = data => 'age' in data
 const double = num => num * 2
 const defaultAge = () => 30
@@ -333,11 +371,28 @@ Returns the value of the second argument if the first function returns truthy, r
 inc: number -> number
 ```
 
-```
+```js
 inc(1) // 2
 ```
 
 Returns the number plus one
+
+### isNil
+
+```
+isNil: a -> Boolean
+```
+
+```js
+isNil(undefined) // true
+isNil(null) // true
+isNil() // true
+isNil('') // false
+isNil(false) // false
+isNil(123) // false
+```
+
+Returns true if passed `undefined` or `null`. Returns false otherwise
 
 ### lens
 
@@ -345,7 +400,7 @@ Returns the number plus one
 lens: (a -> *) -> (* -> a) -> Lens
 ```
 
-```
+```js
 const data = { name: 'Tim', age: 29 }
 const nameLens = lens(
   prop('name'),
@@ -361,7 +416,7 @@ Returns a `Bambi`-style `lens` object for using in `set`, `over`, and `view`.
 lensPath: [string | number] -> Lens
 ```
 
-```
+```js
 const data = { name: 'Tim', location: { state: 'TN' } }
 const stateLens = lensPath(['location', 'state')
 const value = view(stateLens, data) // 'TN'
@@ -375,7 +430,7 @@ Returns a `Babmi`-style `lens` at the given path
 lensProp: string | number -> Lens
 ```
 
-```
+```js
 const data = { name: 'Tim' }
 const nameLens = lensProp('name')
 const value = view(nameLens, data) // 'Tim'
@@ -387,7 +442,7 @@ const value = view(nameLens, data) // 'Tim'
 lt: number -> number -> boolean
 ```
 
-```
+```js
 const a = 1
 const b = 2
 lt(a, b) // true
@@ -402,7 +457,7 @@ Returns true if the first value is less than the second, false if otherwise
 lte: number -> number -> boolean
 ```
 
-```
+```js
 const a = 1
 const b = 2
 lte(a, b) // true
@@ -417,7 +472,7 @@ lte(b, a) // false
 map: (a -> b) -> Iterator -> Iterator
 ```
 
-```
+```js
 const list = [1, 2, 3]
 const fn = a => a * 2
 
@@ -437,7 +492,7 @@ Iterates over a data structures items and applies the passed function to each
 not: (a -> b) -> args -> Boolean
 ```
 
-```
+```js
 const fn = () => false
 const notFn = not(fn)
 
@@ -457,7 +512,7 @@ Returns a function that returns the opposite Boolean value as the passed in func
 over: Lens -> (a -> b) -> * -> *
 ```
 
-```
+```js
 const data = { name: 'Tim', age: 29 }
 const nameLens = lensProp('name')
 const updated = over(nameLens, oldName => 'John', data) // { name: 'John', age: 29 }
@@ -472,7 +527,7 @@ Returns the data structure passed in, with the value at the `lens` updated
 path: Array<string|number> -> DataStructure -> a
 ```
 
-```
+```js
 const obj = { name: 'Tim', location: { city: 'SF', area: ['CA'] } }
 const area = path(['location', 'area', 0], obj)
 
@@ -488,7 +543,7 @@ Returns the value at the path, walking the data structure
 pathOr: a -> Array<string|number> -> DatStructure -> a
 ```
 
-```
+```js
 const obj = {}
 const value = pathOr(1, [1,2, 3], obj)
 
@@ -504,7 +559,7 @@ Returns the value at the path or the passed in default
 prop: (string|number) -> DataStructure -> a
 ```
 
-```
+```js
 const obj = { name: 'Tim' }
 const value = prop('name', obj)
 
@@ -520,7 +575,7 @@ propOr: a -> (string|number) -> DataStructure -> a
 ```
 
 
-```
+```js
 const obj = { name: 'Tim' }
 const name = propOr('default', 'name', obj)
 const age = propOr('default', 'age', obj)
@@ -537,7 +592,7 @@ Returns the value at the prop or the default
 T: () -> boolean
 ```
 
-```
+```js
 T() // true
 ```
 
@@ -563,7 +618,7 @@ Sets the value at the location pointed to by the lens.
 uniq: Array<T> -> Array<T>
 ```
 
-```
+```js
 const arr = [1, 2, 3, 1]
 uniq(arr) //  [1, 2, 3]
 ```
@@ -576,10 +631,12 @@ Returns a copy of the passed in array, with only unique values.
 uppercase: string -> string
 ```
 
-```
+```js
 const name = 'tim'
 uppercase(name) // 'TIM'
 ```
+
+Returns the uppercased version of the passed string
 
 ### view
 
@@ -587,11 +644,13 @@ uppercase(name) // 'TIM'
 view: Lens -> a -> *
 ```
 
-```
+```js
 const data = { name: 'Tim' }
 const nameLens = lensProp('name')
 const value = view(nameLens, data) // 'Tim'
 ```
+
+Allows for reading or viewing of a Bambi-style lens
 
 ### zip
 
@@ -599,8 +658,10 @@ const value = view(nameLens, data) // 'Tim'
 zip: (a -> b -> c) -> [a] -> [b] -> [c]
 ```
 
-```
+```js
 const list1 = [1, 2, 3]
 const list2 = [1, 1, 1]
 const zipped = zip(add, list1, list2) // [2, 3, 4]
 ```
+
+Mixes two arrays by a given function

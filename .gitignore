@@ -4,3 +4,4 @@ dist/
 .env
 *.log
 *.private.*
+.esm_cache
