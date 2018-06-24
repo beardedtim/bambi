@@ -5,7 +5,8 @@ cache:
 notifications:
   email: false
 node_js:
-  - '8'
+  - '9'
+  - '10'
 scripts:
   - yarn coverage
 after_success:
