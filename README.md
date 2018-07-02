@@ -16,6 +16,7 @@
 * [both](#both)
 * [clone](#clone)
 * [compose](#compose)
+* [composeP](#composeP)
 * [curry](#curry)
 * [dec](#dec)
 * [deepClone](#deepClone)
@@ -144,7 +145,7 @@ Performs a shallow clone of an array or object.
 ### compose
 
 ```
-compose: (a -> b) -> (b -> c) -> (a -> c)
+compose: (b -> c) -> (a -> b) -> (a -> c)
 ```
 
 ```js
@@ -162,6 +163,31 @@ getUpperCaseName(data) // 'TIM'
 ```
 
 Composes functions together into a single unary function, calling the passed in functions right-to-left order.
+
+### composeP
+
+```
+composeP: (b -> Promise<c> | c) -> (a -> Promise<b> | b) -> (Promise<a> | a) -> Promise<c>
+```
+
+```js
+const apiCall = Promise.resolve({ _id: 1, friends: [2], name: 'Tim' })
+const getFriends = ({ friends }) =>
+  Promise.resolve([{ _id: 2, name: 'John', friends: [1] }])
+
+const upperCaseNames = map(
+  compose(
+    str => str.toUpperCase(),
+    prop('name')
+  )
+)
+
+const composed = composeP(upperCaseNames, getFriends)
+
+composed(apiCall).then(console.log) // 'JOHN'
+```
+
+Composes functions that may or may not return a promise into a function that returns a promise, given a value
 
 ### cond
 
@@ -597,6 +623,39 @@ value === 1
 ```
 
 Returns the value at the path or the passed in default
+
+### pipe
+
+```
+pipe: (a -> b) -> (b -> c)
+```
+
+```js
+const add1 = v => v + 1
+const add2 = v => v + 2
+
+const adder = pipe(add1, add2)
+
+adder(0) // 3
+```
+
+Returns a function that is the functions passed in, called in right-to-left order.
+
+### pipeP
+
+```
+pipe: (a -> Promise<b> | b) -> (b -> Promise<c> | c) -> (Promise<a> | a) -> Promise<c>
+```
+
+```js
+const apiCall = Promise.resolve({ _id: 1, friends: [2] })
+const getFriends = ({ friends }) => Promise.resolve([{ _id: 2, name: 'John' }])
+const toUpperCase = str => str.toUpperCase()
+
+const piped = pipeP(getFriends, toUpperCase)
+
+pipe.then(console.log) // ['JOHN']
+```
 
 ### prop
 
