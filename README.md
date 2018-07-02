@@ -48,6 +48,7 @@
 * [propOr](#propOr)
 * [random](#random)
 * [reduce](#reduce)
+* [reverse](#reverse)
 * [set](#set)
 * [T](#t)
 * [uniq](#uniq)
@@ -755,6 +756,24 @@ reduce(reducer, initialState, list) // 6
 ```
 
 Reduce a list into a single value given a reducer function.
+
+### reverse
+
+```
+reverse: (Array<a> | string) -> Array<a> | string
+```
+
+```js
+const list = [1, 2, 3]
+
+reverse(list) // [3, 2, 1]
+
+const str = 'abc'
+
+reverse(str) // 'cba'
+```
+
+Returns a shallow copy of the passed in list or string but in reverse order
 
 ### T
 
