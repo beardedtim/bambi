@@ -17,4 +17,8 @@ describe('tail', () => {
     expect(tail1).toEqual([])
     expect(tail2).toEqual(tail1)
   })
+
+  test('returns an empty array if called with nothing', () => {
+    expect(tail()).toEqual([])
+  })
 })
