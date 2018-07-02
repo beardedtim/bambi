@@ -42,6 +42,7 @@
 * [pipe](#pipe)
 * [prop](#prop)
 * [propOr](#propOr)
+* [random](#random)
 * [reduce](#reduce)
 * [set](#set)
 * [T](#t)
@@ -51,7 +52,7 @@
 * [zip](#zip)
 
 
-### adjust
+adjust
 
 ```
 adjust: (a -> b) -> Int -> [a] -> [b]
@@ -585,6 +586,36 @@ age // 'default'
 ```
 
 Returns the value at the prop or the default
+
+### random
+
+```
+random: number -> number -> Integer
+```
+
+```js
+const min = 1
+const max = 10
+random(min, max) // random integer between 1 - 10
+```
+
+Returns a random number between the min/max inclusively.
+
+
+### reduce
+
+```
+reduce: (a -> b -> c) -> a -> a[] -> c
+```
+
+```js
+const reducer = (acc, curr) => acc + curr
+const initialState = 0
+const list = [1, 2, 3]
+reduce(reducer, initialState, list) // 6
+```
+
+Reduce a list into a single value given a reducer function.
 
 ### T
 
