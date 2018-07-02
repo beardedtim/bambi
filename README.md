@@ -33,6 +33,7 @@
 * [ifElse](#ifElse)
 * [inc](#inc)
 * [insert](#insert)
+* [is](#is)
 * [isNil](#isNil)
 * [lens](#lens)
 * [lensPath](#lensPath)
@@ -459,6 +460,29 @@ const index = 1
 
 insert(value, index, list) // [1, 4, 2, 3]
 ```
+
+### is
+
+```
+is: (Constructor | string) -> a -> Boolean
+```
+
+```js
+const isString = is('string')
+const isFunction = is(Function)
+
+class A {}
+const isClass = is(A)
+
+isString('abc') // true
+isFunction(() => {}) // true
+
+class B extends A {}
+const b = new B()
+isClass(b) // true
+```
+
+Returns if the passed in value is of the same type as the passed in constructor _or_ if the `typeof` of the passed in value is the same as the passed in string type.
 
 ### isNil
 
