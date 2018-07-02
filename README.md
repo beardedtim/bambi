@@ -39,6 +39,7 @@
 * [lte](#lte)
 * [map](#map)
 * [not](#not)
+* [once](#once)
 * [path](#path)
 * [pathEq](#pathEq)
 * [pathOr](#pathOr)
@@ -570,6 +571,24 @@ const updated = over(nameLens, oldName => 'John', data) // { name: 'John', age: 
 ```
 
 Returns the data structure passed in, with the value at the `lens` updated
+
+### once
+
+```
+once: (* -> *) -> * -> *
+```
+
+```js
+let count = 0
+const fn = () => count++
+const oner = once(fn)
+
+oner() // 1
+oner() // 1
+count // 2
+```
+
+Returns a function that will call the passed in function only once, always returning the given value
 
 ### path
 
