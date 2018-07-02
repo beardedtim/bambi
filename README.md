@@ -32,6 +32,7 @@
 * [identity](#identity)
 * [ifElse](#ifElse)
 * [inc](#inc)
+* [insert](#insert)
 * [isNil](#isNil)
 * [lens](#lens)
 * [lensPath](#lensPath)
@@ -444,6 +445,20 @@ inc(1) // 2
 ```
 
 Returns the number plus one
+
+### inserts
+
+```
+insert: a -> number -> Array<a> -> Array<a>
+```
+
+```js
+const list = [1, 2, 3]
+const value = 4
+const index = 1
+
+insert(value, index, list) // [1, 4, 2, 3]
+```
 
 ### isNil
 
