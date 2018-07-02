@@ -22,6 +22,7 @@
 * [defaultTo](#defaultTo)
 * [defer](#defer)
 * [dissoc](#dissoc)
+* [equals](#equals)
 * [F](#f)
 * [filter](#filter)
 * [gt](#gt)
@@ -38,6 +39,7 @@
 * [map](#map)
 * [not](#not)
 * [path](#path)
+* [pathEq](#pathEq)
 * [pathOr](#pathOr)
 * [pipe](#pipe)
 * [prop](#prop)
@@ -52,7 +54,7 @@
 * [zip](#zip)
 
 
-adjust
+### adjust
 
 ```
 adjust: (a -> b) -> Int -> [a] -> [b]
@@ -286,6 +288,38 @@ obj.name // 'Tim'
 
 Returns a shallow copy, with the given key deleted
 
+### equals
+
+```
+equals: a -> b -> Boolean
+```
+
+```js
+const a = 1
+const b = 1
+const c = {}
+const d = {}
+
+equals(a, b) // true
+equals(a, c) // false
+equals(c, d )// false because {} !== {}
+```
+
+Returns whethere both values are strictly equal or not
+
+### F
+
+```
+F: () -> boolean
+```
+
+```js
+F() // false
+```
+
+Returns `false`
+
+
 ### gt
 
 ```
@@ -299,6 +333,7 @@ const b = 1
 gt(a, b) // true
 gt(b, a) // false
 ```
+Returns whether the first value is greater than the second
 
 ### gte
 
@@ -315,20 +350,10 @@ gte(a, a) // true
 gte(b, a) // false
 ```
 
-### F
+Returns whether the first value is greater or equal to the second
 
-```
-F: () -> boolean
-```
-
-```js
-F() // false
-```
-
-Returns `false`
 
 ### identity
-
 
 ```
 identity: a -> a
@@ -340,7 +365,6 @@ const id = identity(obj)
 
 id === obj
 ```
-
 Returns the passed in value
 
 ### ifElse
@@ -537,6 +561,27 @@ area === 'CA'
 
 Returns the value at the path, walking the data structure
 
+### pathEq
+
+```
+pathEq: Array<string | number> -> a -> b -> Boolean
+```
+
+```js
+const data = {
+  location: {
+    city: 'Cookeville'
+  }
+}
+
+const path = ['location', 'city']
+const value = 'Cookeville'
+
+pathEq(path, value, data) // true
+```
+
+Returns whether or not a path is equal to a value inside of an object or not
+
 ### pathOr
 
 
@@ -568,6 +613,22 @@ value === 'Tim'
 ```
 
 Returns the value at the given key
+
+### propEq
+
+```
+propEq: (string | number) -> a -> b -> Boolean
+```
+
+```js
+const data = { name: 'Tim' }
+const prop = 'name'
+const value = 'John'
+
+propEq(prop, value, data) // false
+```
+
+Returns whether or not a prop is equal to a value inside of an object
 
 ### propOr
 
