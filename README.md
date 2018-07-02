@@ -28,6 +28,7 @@
 * [filter](#filter)
 * [gt](#gt)
 * [gte](#gte)
+* [head](#head)
 * [identity](#identity)
 * [ifElse](#ifElse)
 * [inc](#inc)
@@ -51,6 +52,7 @@
 * [reverse](#reverse)
 * [set](#set)
 * [T](#t)
+* [tail](#tail)
 * [uniq](#uniq)
 * [uppercase](#uppercase)
 * [view](#view)
@@ -380,6 +382,19 @@ gte(b, a) // false
 
 Returns whether the first value is greater or equal to the second
 
+### head 
+
+```
+head: Array<a> -> a
+```
+
+```js
+const list = [1,2, 3]
+
+head(list) // 1
+```
+
+Returns the first item in the list or undefined if empty
 
 ### identity
 
@@ -786,6 +801,20 @@ T() // true
 ```
 
 Returns `true`
+
+### tail
+
+```
+tail: Array<a> -> Array<a>
+```
+
+```js
+const list = [1, 2, 3]
+
+tail(list) // [2, 3]
+```
+
+Returns all but the first item in the list
 
 ### set
 
