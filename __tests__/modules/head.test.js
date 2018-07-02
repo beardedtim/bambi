@@ -15,4 +15,8 @@ describe('head', () => {
 
     expect(first).not.toBeDefined()
   })
+
+  test('returns undefined if not given anything', () => {
+    expect(head()).not.toBeDefined()
+  })
 })
