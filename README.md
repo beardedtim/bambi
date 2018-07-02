@@ -16,19 +16,24 @@
 * [both](#both)
 * [clone](#clone)
 * [compose](#compose)
+* [composeP](#composeP)
 * [curry](#curry)
 * [dec](#dec)
 * [deepClone](#deepClone)
 * [defaultTo](#defaultTo)
 * [defer](#defer)
 * [dissoc](#dissoc)
+* [equals](#equals)
 * [F](#f)
 * [filter](#filter)
 * [gt](#gt)
 * [gte](#gte)
+* [head](#head)
 * [identity](#identity)
 * [ifElse](#ifElse)
 * [inc](#inc)
+* [insert](#insert)
+* [is](#is)
 * [isNil](#isNil)
 * [lens](#lens)
 * [lensPath](#lensPath)
@@ -37,22 +42,26 @@
 * [lte](#lte)
 * [map](#map)
 * [not](#not)
+* [once](#once)
 * [path](#path)
+* [pathEq](#pathEq)
 * [pathOr](#pathOr)
 * [pipe](#pipe)
 * [prop](#prop)
 * [propOr](#propOr)
 * [random](#random)
 * [reduce](#reduce)
+* [reverse](#reverse)
 * [set](#set)
 * [T](#t)
+* [tail](#tail)
 * [uniq](#uniq)
 * [uppercase](#uppercase)
 * [view](#view)
 * [zip](#zip)
 
 
-adjust
+### adjust
 
 ```
 adjust: (a -> b) -> Int -> [a] -> [b]
@@ -142,7 +151,7 @@ Performs a shallow clone of an array or object.
 ### compose
 
 ```
-compose: (a -> b) -> (b -> c) -> (a -> c)
+compose: (b -> c) -> (a -> b) -> (a -> c)
 ```
 
 ```js
@@ -160,6 +169,31 @@ getUpperCaseName(data) // 'TIM'
 ```
 
 Composes functions together into a single unary function, calling the passed in functions right-to-left order.
+
+### composeP
+
+```
+composeP: (b -> Promise<c> | c) -> (a -> Promise<b> | b) -> (Promise<a> | a) -> Promise<c>
+```
+
+```js
+const apiCall = Promise.resolve({ _id: 1, friends: [2], name: 'Tim' })
+const getFriends = ({ friends }) =>
+  Promise.resolve([{ _id: 2, name: 'John', friends: [1] }])
+
+const upperCaseNames = map(
+  compose(
+    str => str.toUpperCase(),
+    prop('name')
+  )
+)
+
+const composed = composeP(upperCaseNames, getFriends)
+
+composed(apiCall).then(console.log) // 'JOHN'
+```
+
+Composes functions that may or may not return a promise into a function that returns a promise, given a value
 
 ### cond
 
@@ -286,6 +320,38 @@ obj.name // 'Tim'
 
 Returns a shallow copy, with the given key deleted
 
+### equals
+
+```
+equals: a -> b -> Boolean
+```
+
+```js
+const a = 1
+const b = 1
+const c = {}
+const d = {}
+
+equals(a, b) // true
+equals(a, c) // false
+equals(c, d )// false because {} !== {}
+```
+
+Returns whethere both values are strictly equal or not
+
+### F
+
+```
+F: () -> boolean
+```
+
+```js
+F() // false
+```
+
+Returns `false`
+
+
 ### gt
 
 ```
@@ -299,6 +365,7 @@ const b = 1
 gt(a, b) // true
 gt(b, a) // false
 ```
+Returns whether the first value is greater than the second
 
 ### gte
 
@@ -315,20 +382,23 @@ gte(a, a) // true
 gte(b, a) // false
 ```
 
-### F
+Returns whether the first value is greater or equal to the second
+
+### head 
 
 ```
-F: () -> boolean
+head: Array<a> -> a
 ```
 
 ```js
-F() // false
+const list = [1,2, 3]
+
+head(list) // 1
 ```
 
-Returns `false`
+Returns the first item in the list or undefined if empty
 
 ### identity
-
 
 ```
 identity: a -> a
@@ -340,7 +410,6 @@ const id = identity(obj)
 
 id === obj
 ```
-
 Returns the passed in value
 
 ### ifElse
@@ -377,6 +446,43 @@ inc(1) // 2
 ```
 
 Returns the number plus one
+
+### inserts
+
+```
+insert: a -> number -> Array<a> -> Array<a>
+```
+
+```js
+const list = [1, 2, 3]
+const value = 4
+const index = 1
+
+insert(value, index, list) // [1, 4, 2, 3]
+```
+
+### is
+
+```
+is: (Constructor | string) -> a -> Boolean
+```
+
+```js
+const isString = is('string')
+const isFunction = is(Function)
+
+class A {}
+const isClass = is(A)
+
+isString('abc') // true
+isFunction(() => {}) // true
+
+class B extends A {}
+const b = new B()
+isClass(b) // true
+```
+
+Returns if the passed in value is of the same type as the passed in constructor _or_ if the `typeof` of the passed in value is the same as the passed in string type.
 
 ### isNil
 
@@ -521,6 +627,24 @@ const updated = over(nameLens, oldName => 'John', data) // { name: 'John', age: 
 
 Returns the data structure passed in, with the value at the `lens` updated
 
+### once
+
+```
+once: (* -> *) -> * -> *
+```
+
+```js
+let count = 0
+const fn = () => count++
+const oner = once(fn)
+
+oner() // 1
+oner() // 1
+count // 2
+```
+
+Returns a function that will call the passed in function only once, always returning the given value
+
 ### path
 
 
@@ -536,6 +660,27 @@ area === 'CA'
 ``` 
 
 Returns the value at the path, walking the data structure
+
+### pathEq
+
+```
+pathEq: Array<string | number> -> a -> b -> Boolean
+```
+
+```js
+const data = {
+  location: {
+    city: 'Cookeville'
+  }
+}
+
+const path = ['location', 'city']
+const value = 'Cookeville'
+
+pathEq(path, value, data) // true
+```
+
+Returns whether or not a path is equal to a value inside of an object or not
 
 ### pathOr
 
@@ -553,6 +698,39 @@ value === 1
 
 Returns the value at the path or the passed in default
 
+### pipe
+
+```
+pipe: (a -> b) -> (b -> c)
+```
+
+```js
+const add1 = v => v + 1
+const add2 = v => v + 2
+
+const adder = pipe(add1, add2)
+
+adder(0) // 3
+```
+
+Returns a function that is the functions passed in, called in right-to-left order.
+
+### pipeP
+
+```
+pipe: (a -> Promise<b> | b) -> (b -> Promise<c> | c) -> (Promise<a> | a) -> Promise<c>
+```
+
+```js
+const apiCall = Promise.resolve({ _id: 1, friends: [2] })
+const getFriends = ({ friends }) => Promise.resolve([{ _id: 2, name: 'John' }])
+const toUpperCase = str => str.toUpperCase()
+
+const piped = pipeP(getFriends, toUpperCase)
+
+pipe.then(console.log) // ['JOHN']
+```
+
 ### prop
 
 
@@ -568,6 +746,22 @@ value === 'Tim'
 ```
 
 Returns the value at the given key
+
+### propEq
+
+```
+propEq: (string | number) -> a -> b -> Boolean
+```
+
+```js
+const data = { name: 'Tim' }
+const prop = 'name'
+const value = 'John'
+
+propEq(prop, value, data) // false
+```
+
+Returns whether or not a prop is equal to a value inside of an object
 
 ### propOr
 
@@ -617,6 +811,24 @@ reduce(reducer, initialState, list) // 6
 
 Reduce a list into a single value given a reducer function.
 
+### reverse
+
+```
+reverse: (Array<a> | string) -> Array<a> | string
+```
+
+```js
+const list = [1, 2, 3]
+
+reverse(list) // [3, 2, 1]
+
+const str = 'abc'
+
+reverse(str) // 'cba'
+```
+
+Returns a shallow copy of the passed in list or string but in reverse order
+
 ### T
 
 ```
@@ -628,6 +840,20 @@ T() // true
 ```
 
 Returns `true`
+
+### tail
+
+```
+tail: Array<a> -> Array<a>
+```
+
+```js
+const list = [1, 2, 3]
+
+tail(list) // [2, 3]
+```
+
+Returns all but the first item in the list
 
 ### set
 
