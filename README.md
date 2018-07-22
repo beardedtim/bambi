@@ -20,6 +20,7 @@
 * [curry](#curry)
 * [dec](#dec)
 * [deepClone](#deepClone)
+* [deepMerge](#deepMerge)
 * [defaultTo](#defaultTo)
 * [defer](#defer)
 * [dissoc](#dissoc)
@@ -265,6 +266,22 @@ clonedObj.k === obj.k // false
 ```
 
 Performs a deep cloning of an object, recursively until getting to primitives.
+
+### deepMerge
+
+```
+deepMerge: a -> a -> a
+```
+
+```js
+const a = { data: { name: { first: 't' } } }
+const b = { data: { name: { last: 'r' } } }
+
+deepMerge(a, b) // { data: { name: { first: 't', last: 'r' } } }
+deepMerge({ data: [1 ]}, { data: [2] }) // { data: [1, 2] }
+```
+
+Recursively merges keys on the objects.
 
 ### defaultTo
 
