@@ -9,9 +9,6 @@ node_js:
   - '10'
 scripts:
   - yarn coverage
-after_success:
-  - yarn coverage
-  - yarn semantic-release
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
