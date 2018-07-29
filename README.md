@@ -43,6 +43,7 @@
 * [lte](#lte)
 * [map](#map)
 * [not](#not)
+* [omit](#omit)
 * [once](#once)
 * [path](#path)
 * [pathEq](#pathEq)
@@ -643,6 +644,21 @@ const updated = over(nameLens, oldName => 'John', data) // { name: 'John', age: 
 ```
 
 Returns the data structure passed in, with the value at the `lens` updated
+
+### omit
+
+```
+omit: (Array<string>) -> a -> a
+```
+
+```js
+const keys = ['name', 'age']
+const obj = { name : 'tim', age: 29, location: 'USA' }
+
+omit(keys, obj) // { location: 'USA' }
+```
+
+Returns a shallow copy of the passed in object, with the given keys removed
 
 ### once
 
