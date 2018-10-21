@@ -1,4 +1,4 @@
-import pipeP from '../../modules/pipeP'
+const pipeP = require('../../modules/pipeP')
 
 describe('pipeP', () => {
   test('returns a Promise', () => {

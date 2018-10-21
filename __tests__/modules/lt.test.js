@@ -1,4 +1,4 @@
-import lt from '../../modules/lt'
+const lt = require('../../modules/lt')
 
 describe('lt', () => {
   test('returns true if the first value is less than the second', () => {

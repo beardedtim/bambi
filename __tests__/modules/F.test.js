@@ -1,4 +1,4 @@
-import F from '../../modules/F'
+const F = require('../../modules/F')
 
 describe('F', () => {
   test('returns false', () => {

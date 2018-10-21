@@ -1,4 +1,4 @@
-import reverse from '../../modules/reverse'
+const reverse = require('../../modules/reverse')
 
 describe('reverse', () => {
   test('returns the passed in array in reverse order', () => {

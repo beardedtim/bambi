@@ -1,4 +1,4 @@
-import zip from '../../modules/zip'
+const zip = require('../../modules/zip')
 
 describe('Zip', () => {
   test('returns a new array by mixing the two arrays together by the given function', () => {

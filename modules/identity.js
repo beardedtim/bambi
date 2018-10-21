@@ -1,16 +1,16 @@
 /**
  * Returns the value passed in
- * 
+ *
  * @example
- * 
+ *
  * obj = {}
- * 
+ *
  * identity(obj) === obj
- * 
- * 
+ *
+ *
  * @param {*} s - The value
- * @return {*} - The value passed in 
+ * @return {*} - The value passed in
  */
-const identity = s => s
+const identity = s => s;
 
-export default identity
+module.exports = identity;

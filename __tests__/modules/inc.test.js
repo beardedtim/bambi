@@ -1,4 +1,4 @@
-import inc from '../../modules/inc'
+const inc = require('../../modules/inc')
 
 describe('inc', () => {
   test('returns the number one higher than the passed in', () => {

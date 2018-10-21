@@ -1,4 +1,4 @@
-import always from '../../modules/always'
+const always = require('../../modules/always')
 
 describe('always', () => {
   test('returns a function that always returns the passed value', () => {

@@ -1,4 +1,4 @@
-import assoc from '../../modules/assoc'
+const assoc = require('../../modules/assoc')
 
 describe('assoc', () => {
   test('associates a value with a key in a new object', () => {

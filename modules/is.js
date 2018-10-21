@@ -1,11 +1,11 @@
-import curry from './curry'
+const curry = require("./curry");
 
 const is = (type, check) => {
-  if (typeof type === 'string') {
-    return typeof check === type
+  if (typeof type === "string") {
+    return typeof check === type;
   }
 
-  return (type && check) && (check.constructor === type || check instanceof type)
-}
+  return type && check && (check.constructor === type || check instanceof type);
+};
 
-export default curry(is)
+module.exports = curry(is);

@@ -1,5 +1,5 @@
-import curry from './curry'
+const curry = require("./curry");
 
-const add = (a, b) => a + b
+const add = (a, b) => a + b;
 
-export default curry(add)
+module.exports = curry(add);

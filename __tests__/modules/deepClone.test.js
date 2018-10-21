@@ -1,4 +1,4 @@
-import deepClone from '../../modules/deepClone'
+const deepClone = require('../../modules/deepClone')
 
 describe('deepClone', () => {
   test('retuns a deeply cloned object', () => {

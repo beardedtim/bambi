@@ -1,4 +1,4 @@
-import once from '../../modules/once'
+const once = require('../../modules/once')
 
 describe('once', () => {
   test('returns the value of calling the given function with the given arguments', () => {

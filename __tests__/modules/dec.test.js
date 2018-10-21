@@ -1,4 +1,4 @@
-import dec from '../../modules/dec'
+const dec = require('../../modules/dec')
 
 describe('dec', () => {
   test('returns the number one less than the passed in', () => {

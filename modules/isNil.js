@@ -1,5 +1,3 @@
-const isNil = value =>
-  typeof value === 'undefined' ||
-  value === null
+const isNil = value => typeof value === "undefined" || value === null;
 
-export default isNil
+module.exports = isNil;

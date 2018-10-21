@@ -1,4 +1,4 @@
-import and from '../../modules/and'
+const and = require('../../modules/and')
 
 describe('and', () => {
   test('returns true if both values are truthy', () => {

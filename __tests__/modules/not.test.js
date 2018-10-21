@@ -1,4 +1,4 @@
-import not from '../../modules/not'
+const not = require('../../modules/not')
 
 describe('Not', () => {
   it('returns true if the passed in function returns falsey', () => {

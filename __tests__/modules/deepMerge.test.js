@@ -1,4 +1,4 @@
-import deepMerge from '../../modules/deepMerge'
+const deepMerge = require('../../modules/deepMerge')
 
 describe('deepMerge', () => {
     test('returns merged values if all primitives', () => {

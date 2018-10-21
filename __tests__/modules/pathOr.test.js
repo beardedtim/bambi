@@ -1,4 +1,4 @@
-import pathOr from '../../modules/pathOr'
+const pathOr = require('../../modules/pathOr')
 
 describe('pathOr', () => {
   test('returns the value at the given path', () => {

@@ -1,4 +1,4 @@
-import defer from '../../modules/defer'
+const defer = require('../../modules/defer')
 
 describe('defer', () => {
   test('returns a function that applies the arguments to the given function', () => {

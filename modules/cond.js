@@ -1,13 +1,13 @@
-import curry from './curry'
+const curry = require("./curry");
 
 const cond = (conditions, value) => {
   for (let [pred, fn] of conditions) {
     if (pred(value)) {
-      return fn(value)
+      return fn(value);
     }
   }
 
-  return value
-}
+  return value;
+};
 
-export default curry(cond)
+module.exports = curry(cond);

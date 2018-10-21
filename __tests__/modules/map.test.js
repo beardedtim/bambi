@@ -1,4 +1,4 @@
-import map from '../../modules/map'
+const map = require('../../modules/map')
 
 describe('map', () => {
   test('applies the function to each item in the list', () => {

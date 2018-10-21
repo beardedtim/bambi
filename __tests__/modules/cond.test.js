@@ -1,4 +1,4 @@
-import cond from '../../modules/cond'
+const cond = require('../../modules/cond')
 
 describe('cond', () => {
   test('returns the value if no conditions met', () => {

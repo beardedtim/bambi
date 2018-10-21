@@ -1,4 +1,4 @@
-import head from '../../modules/head'
+const head = require('../../modules/head')
 
 describe('head', () => {
   test('returns the first item in a list', () => {

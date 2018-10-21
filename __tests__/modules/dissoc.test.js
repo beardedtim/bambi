@@ -1,4 +1,4 @@
-import dissoc from '../../modules/dissoc'
+const dissoc = require('../../modules/dissoc')
 
 describe('assoc', () => {
   test('remoces a value with a key in a new object', () => {

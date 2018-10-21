@@ -1,4 +1,4 @@
-import identity from '../../modules/identity'
+const identity = require('../../modules/identity')
 
 describe('identity', () => {
   test('returns the value passed', () => {

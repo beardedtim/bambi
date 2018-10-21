@@ -1,4 +1,4 @@
-import propEq from '../../modules/propEq'
+const propEq = require('../../modules/propEq')
 
 describe('propEq', () => {
   test('is a curried function', () => {

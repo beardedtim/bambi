@@ -1,4 +1,4 @@
-import ifElse from '../../modules/ifElse'
+const ifElse = require('../../modules/ifElse')
 
 describe('ifElse', () => {
   test('returns the result of the second argument if the first returns truthy', () => {

@@ -1,6 +1,6 @@
-import curry from './curry'
-import pathEq from './pathEq'
+const curry = require("./curry");
+const pathEq = require("./pathEq");
 
-const propEq = (prop, value, data) => pathEq([prop], value, data)
+const propEq = (prop, value, data) => pathEq([prop], value, data);
 
-export default curry(propEq)
+module.exports = curry(propEq);

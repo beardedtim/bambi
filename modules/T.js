@@ -1,3 +1,3 @@
-const T = () => true
+const T = () => true;
 
-export default T
+module.exports = T;

@@ -1,4 +1,4 @@
-import gt from '../../modules/gt'
+const gt = require('../../modules/gt')
 
 describe('gt', () => {
   test('returns true if the first value is greater than the second', () => {

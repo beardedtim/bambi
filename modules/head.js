@@ -1,3 +1,3 @@
-const head = ([v] = []) => v
+const head = ([v] = []) => v;
 
-export default head
+module.exports = head;

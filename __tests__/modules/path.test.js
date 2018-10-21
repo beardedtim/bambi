@@ -1,4 +1,4 @@
-import path from '../../modules/path'
+const path = require('../../modules/path')
 
 describe('path', () => {
   test('returns the value at the given path', () => {

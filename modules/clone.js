@@ -1,12 +1,12 @@
-import curry from './curry'
-import reduce from './reduce'
+const curry = require("./curry");
+const reduce = require("./reduce");
 
 const clone = obj => {
   if (Array.isArray(obj)) {
-    return obj.slice()
+    return obj.slice();
   }
 
-  return Object.assign({}, obj)
-}
+  return Object.assign({}, obj);
+};
 
-export default curry(clone)
+module.exports = curry(clone);

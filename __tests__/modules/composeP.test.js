@@ -1,4 +1,4 @@
-import composeP from '../../modules/composeP'
+const composeP = require('../../modules/composeP')
 
 describe('composeP', () => {
   test('returns a Promise', () => {

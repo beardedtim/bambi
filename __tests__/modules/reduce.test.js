@@ -1,4 +1,4 @@
-import reduce from '../../modules/reduce'
+const reduce = require('../../modules/reduce')
 
 describe('identity', () => {
   test('calls reduce method if located', () => {

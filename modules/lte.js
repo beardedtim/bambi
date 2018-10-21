@@ -1,5 +1,5 @@
-import curry from './curry'
+const curry = require("./curry");
 
-const lte = (a, b) => a <= b
+const lte = (a, b) => a <= b;
 
-export default curry(lte)
+module.exports = curry(lte);

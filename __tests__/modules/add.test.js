@@ -1,4 +1,4 @@
-import add from '../../modules/add'
+const add = require('../../modules/add')
 
 describe('add', () => {
   test('adds two numbers together', () => {

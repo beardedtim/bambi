@@ -1,4 +1,4 @@
-import both from '../../modules/both'
+const both = require('../../modules/both')
 
 describe('both', () => {
   test('is a curried function', () => {

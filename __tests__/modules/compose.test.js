@@ -1,4 +1,4 @@
-import compose from '../../modules/compose'
+const compose = require('../../modules/compose')
 
 describe('compose', () => {
   test('composes the given functions and calls them in reverse order', () => {

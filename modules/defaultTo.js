@@ -1,12 +1,11 @@
-import curry from './curry'
+const curry = require("./curry");
 
 const defaultTo = (defaultValue, data) => {
-  if (data === null
-    || data === undefined) {
-      return defaultValue
+  if (data === null || data === undefined) {
+    return defaultValue;
   }
 
-  return data
-}
+  return data;
+};
 
-export default curry(defaultTo)
+module.exports = curry(defaultTo);

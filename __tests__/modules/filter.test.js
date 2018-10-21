@@ -1,4 +1,4 @@
-import filter from '../../modules/filter'
+const filter = require('../../modules/filter')
 
 describe('filter', () => {
   test('calls the iterator filter if present', () => {

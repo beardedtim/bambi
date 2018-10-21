@@ -1,15 +1,15 @@
-import curry from './curry'
+const curry = require("./curry");
 
 /**
  * A way to set a value on a lens via a function
- * The function gets passed the value at the key along with the 
+ * The function gets passed the value at the key along with the
  * data structure
- * 
- * @param {Lens} lens - The lens to the value to set 
- * @param {function(*, *) => *} fn - A function to immutably create a new value 
+ *
+ * @param {Lens} lens - The lens to the value to set
+ * @param {function(*, *) => *} fn - A function to immutably create a new value
  * @param {*} data - The data to look in
- * @return {*} 
+ * @return {*}
  */
-export const over = (lens, fn, data) => lens.set(fn(lens.get(data)), data)
+const over = (lens, fn, data) => lens.set(fn(lens.get(data)), data);
 
-export default curry(over)
+module.exports = curry(over);

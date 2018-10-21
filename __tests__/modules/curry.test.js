@@ -1,4 +1,4 @@
-import curry from '../../modules/curry'
+const curry = require('../../modules/curry')
 
 describe('curry', () => {
   test('returns a function', () => {

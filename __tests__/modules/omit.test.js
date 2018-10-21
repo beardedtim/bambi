@@ -1,4 +1,4 @@
-import omit from '../../modules/omit'
+const omit = require('../../modules/omit')
 
 describe('omit', () => {
     test('returns a clone of the passed in object', () => {

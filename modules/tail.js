@@ -1,3 +1,3 @@
-const tail = ([h, ...v] = []) => v
+const tail = ([h, ...v] = []) => v;
 
-export default tail
+module.exports = tail;

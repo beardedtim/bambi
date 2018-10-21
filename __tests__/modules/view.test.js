@@ -1,5 +1,5 @@
-import view from '../../modules/view'
-import lensProp from '../../modules/lensProp'
+const view = require('../../modules/view')
+const lensProp = require('../../modules/lensProp')
 
 describe('View', () => {
   test('It returns the value at the lens', () => {

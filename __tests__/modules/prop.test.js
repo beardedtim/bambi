@@ -1,4 +1,4 @@
-import prop from '../../modules/prop'
+const prop = require('../../modules/prop')
 
 describe('prop', () => {
   test('returns the value at the given key', () => {

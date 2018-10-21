@@ -1,3 +1,3 @@
-const not = fn => (...args) => !fn(...args)
+const not = fn => (...args) => !fn(...args);
 
-export default not
+module.exports = not;

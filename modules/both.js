@@ -1,5 +1,5 @@
-import curry from './curry'
+const curry = require("./curry");
 
-const both = (fnA, fnB, state) => fnA(state) && fnB(state)
+const both = (fnA, fnB, state) => fnA(state) && fnB(state);
 
-export default curry(both)
+module.exports = curry(both);

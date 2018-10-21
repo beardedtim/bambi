@@ -1,4 +1,4 @@
-import lte from '../../modules/lte'
+const lte = require('../../modules/lte')
 
 describe('lte', () => {
   test('returns true if the value is less than the second', () => {

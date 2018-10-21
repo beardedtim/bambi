@@ -1,4 +1,4 @@
-import uppercase from '../../modules/uppercase'
+const uppercase = require('../../modules/uppercase')
 
 describe('uppercase', () => {
   test('returns the given string but uppercased', () => {

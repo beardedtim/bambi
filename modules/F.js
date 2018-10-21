@@ -1,3 +1,3 @@
-const F = () => false
+const F = () => false;
 
-export default F
+module.exports = F;

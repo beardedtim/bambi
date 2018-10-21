@@ -1,4 +1,4 @@
-import equals from '../../modules/equals'
+const equals = require('../../modules/equals')
 
 describe('equals', () => {
   test('returns the strictly equals comparison', () => {

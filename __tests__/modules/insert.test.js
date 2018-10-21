@@ -1,4 +1,4 @@
-import insert from '../../modules/insert'
+const insert = require('../../modules/insert')
 
 describe('insert', () => {
   test('inserts the item at the index given', () => {

@@ -1,7 +1,7 @@
-import curry from './curry'
-import equals from './equals'
-import path from './path'
+const curry = require("./curry");
+const equals = require("./equals");
+const path = require("./path");
 
-const pathEq = (p, v, d) => equals(path(p, d), v)
+const pathEq = (p, v, d) => equals(path(p, d), v);
 
-export default curry(pathEq)
+module.exports = curry(pathEq);

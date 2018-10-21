@@ -1,4 +1,4 @@
-import pathEq from '../../modules/pathEq'
+const pathEq = require('../../modules/pathEq')
 
 describe('pathEq', () => {
   test('is a curried function', () => {

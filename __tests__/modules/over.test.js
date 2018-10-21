@@ -1,5 +1,5 @@
-import over from '../../modules/over'
-import lensProp from '../../modules/lensProp'
+const over = require('../../modules/over')
+const lensProp = require('../../modules/lensProp')
 
 describe('Over', () => {
   test('It sets the value at the given lens by applying the given function', () => {

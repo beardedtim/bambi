@@ -7,14 +7,9 @@
   "author": "Tim Roberts <timiroberts@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "babel-core": "^6.26.0",
-    "babel-jest": "^21.0.2",
-    "babel-polyfill": "^6.26.0",
-    "babel-preset-env": "^1.6.0",
     "commitizen": "^2.9.6",
     "coveralls": "^3.0.0",
     "cz-conventional-changelog": "^2.0.0",
-    "env": "^0.0.2",
     "jest": "^21.1.0",
     "prettier-standard": "^6.0.0",
     "semantic-release": "^8.0.0",
@@ -36,17 +31,5 @@
     "commitizen": {
       "path": "cz-conventional-changelog"
     }
-  },
-  "dependencies": {
-    "@std/esm": "^0.10.0"
-  },
-  "@std/esm": {
-    "esm": "js",
-    "cjs": true
-  },
-  "babel": {
-    "presets": [
-      "./.babelrc.js"
-    ]
   }
 }

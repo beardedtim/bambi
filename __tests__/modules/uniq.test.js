@@ -1,4 +1,4 @@
-import uniq from '../../modules/uniq'
+const uniq = require('../../modules/uniq')
 
 describe('uniq', () => {
   test('returns an array of unique values', () => {

@@ -1,10 +1,6 @@
-import curry from './curry'
+const curry = require("./curry");
 
-const insert = (value, index, list) => list
-  .slice(0, index)
-  .concat(
-    value,
-    ...list.slice(index)
-  )
+const insert = (value, index, list) =>
+  list.slice(0, index).concat(value, ...list.slice(index));
 
-export default curry(insert)
+module.exports = curry(insert);

@@ -1,11 +1,11 @@
 const reverse = list => {
-  let result = Array.isArray(list) ? [] : ''
+  let result = Array.isArray(list) ? [] : "";
 
   for (let i = list.length - 1; i > -1; i--) {
-    result = result.concat(list[i])
+    result = result.concat(list[i]);
   }
 
-  return result
-}
+  return result;
+};
 
-export default reverse
+module.exports = reverse;

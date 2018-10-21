@@ -1,4 +1,4 @@
-import adjust from '../../modules/adjust'
+const adjust = require('../../modules/adjust')
 
 describe('adjust', () => {
   test('is curried', () => {

@@ -1,4 +1,4 @@
-import isNil from '../../modules/isNil'
+const isNil = require('../../modules/isNil')
 
 describe('isNil', () => {
   test('returns true if the value passed is undefined', () => {

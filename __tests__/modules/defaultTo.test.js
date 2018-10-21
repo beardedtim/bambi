@@ -1,4 +1,4 @@
-import defaultTo from '../../modules/defaultTo'
+const defaultTo = require('../../modules/defaultTo')
 
 describe('defaultTo', () => {
   test('returns the value given if not equal to undefined or null', () => {

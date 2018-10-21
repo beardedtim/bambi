@@ -1,4 +1,4 @@
-import tail from '../../modules/tail'
+const tail = require('../../modules/tail')
 
 describe('tail', () => {
   test('returns the whole list, except for the head', () => {

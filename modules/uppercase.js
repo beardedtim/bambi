@@ -1,5 +1,5 @@
-import curry from './curry'
+const curry = require("./curry");
 
-const uppercase = str => str.toUpperCase()
+const uppercase = str => str.toUpperCase();
 
-export default curry(uppercase)
+module.exports = curry(uppercase);

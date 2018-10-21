@@ -1,4 +1,4 @@
-import clone from '../../modules/clone'
+const clone = require('../../modules/clone')
 
 describe('Clone', () => {
   test('returns a shallow copy of the passed in array', () => {

@@ -1,14 +1,14 @@
-import curry from './curry'
+const curry = require("./curry");
 
 const deepClone = obj => {
-  const result = Array.isArray(obj) ? [] : {}
+  const result = Array.isArray(obj) ? [] : {};
 
   for (let key in obj) {
-    const val = obj[key]
-    result[key] = (val && typeof val === 'object') ? deepClone(val) : val
+    const val = obj[key];
+    result[key] = val && typeof val === "object" ? deepClone(val) : val;
   }
 
-  return result
-}
+  return result;
+};
 
-export default curry(deepClone)
+module.exports = curry(deepClone);

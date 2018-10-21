@@ -1,16 +1,16 @@
-import curry from './curry'
+const curry = require("./curry");
 
 const omit = (keys, obj) => {
-    const result = {}
-    for (const [key, value] of Object.entries(obj)) {
-        result[key] = value
-    }
+  const result = {};
+  for (const [key, value] of Object.entries(obj)) {
+    result[key] = value;
+  }
 
-    keys.forEach(key => {
-        delete result[key]
-    })
+  keys.forEach(key => {
+    delete result[key];
+  });
 
-    return result
-}
+  return result;
+};
 
-export default curry(omit)
+module.exports = curry(omit);

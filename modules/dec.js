@@ -1,3 +1,3 @@
-const dec = num => num - 1
+const dec = num => num - 1;
 
-export default dec
+module.exports = dec;

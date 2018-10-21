@@ -1,32 +1,32 @@
-import curry from './curry'
-import prop from './prop'
+const curry = require("./curry");
+const prop = require("./prop");
 
 /**
  * Maps over a data structure and applies a function to each member
  * Uses interator.map if present
- * 
+ *
  * @example
- * 
+ *
  *    iterator = [1, 2, 3]
  *    fn = n => n * 2
  *    map(fn, iterator) // [2, 4, 6]
  *
- * @param {Function} fn - Function to apply to each item 
+ * @param {Function} fn - Function to apply to each item
  * @param {Iterator} iterator - Data structure to walk
  * @return {Iterator} - The mapped data structure
  */
 const map = (fn, iterator) => {
-  if ('map' in iterator) {
-    return iterator.map(fn)
+  if ("map" in iterator) {
+    return iterator.map(fn);
   }
 
-  const result = {}
+  const result = {};
 
-  for(let k in iterator) {
-    result[k] = fn(prop(k, iterator))
+  for (let k in iterator) {
+    result[k] = fn(prop(k, iterator));
   }
 
-  return result
-}
+  return result;
+};
 
-export default curry(map)
+module.exports = curry(map);

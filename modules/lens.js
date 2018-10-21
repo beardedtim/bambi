@@ -1,14 +1,14 @@
-import curry from './curry'
+const curry = require("./curry");
 
 /**
  * A way to get and set values in a data structure
- * 
- * @param {function(any) => any} get 
- * @param {function(any, a) => a} set 
+ *
+ * @param {function(any) => any} get
+ * @param {function(any, a) => a} set
  */
-export const lens = (get, set) => ({
+const lens = (get, set) => ({
   get,
   set
-})
+});
 
-export default curry(lens)
+module.exports = curry(lens);

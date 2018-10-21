@@ -1,5 +1,5 @@
-import set from '../../modules/set'
-import lensProp from '../../modules/lensProp'
+const set = require('../../modules/set')
+const lensProp = require('../../modules/lensProp')
 
 describe('Set', () => {
   test('It sets the given value on the given lens in the given data', () => {

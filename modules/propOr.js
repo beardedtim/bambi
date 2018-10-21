@@ -1,16 +1,16 @@
-import curry from './curry'
-import prop from './prop'
+const curry = require("./curry");
+const prop = require("./prop");
 
 /**
- * 
- * @param {*} def - Default value 
- * @param {(strinng|number)} key - The key to grab 
+ *
+ * @param {*} def - Default value
+ * @param {(strinng|number)} key - The key to grab
  * @param {Object} obj - The data to grab from
- * @return {*} 
+ * @return {*}
  */
 const propOr = (def, key, obj) => {
-  const val = prop(key, obj)
-  return val === undefined ? def : val
-}
+  const val = prop(key, obj);
+  return val === undefined ? def : val;
+};
 
-export default curry(propOr)
+module.exports = curry(propOr);

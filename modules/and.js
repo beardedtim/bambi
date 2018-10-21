@@ -1,5 +1,5 @@
-import curry from './curry'
+const curry = require("./curry");
 
-const and = (a, b) => !!(a && b)
+const and = (a, b) => !!(a && b);
 
-export default curry(and)
+module.exports = curry(and);

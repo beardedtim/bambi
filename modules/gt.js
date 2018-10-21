@@ -1,5 +1,5 @@
-import curry from './curry'
+const curry = require("./curry");
 
-const gt = (a, b) => a > b
+const gt = (a, b) => a > b;
 
-export default curry(gt)
+module.exports = curry(gt);

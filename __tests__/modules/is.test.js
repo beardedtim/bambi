@@ -1,4 +1,4 @@
-import is from '../../modules/is'
+const is = require('../../modules/is')
 
 describe('is', () => {
   test('is a curried function', () => {

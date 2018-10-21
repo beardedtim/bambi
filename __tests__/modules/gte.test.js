@@ -1,4 +1,4 @@
-import gte from '../../modules/gte'
+const gte = require('../../modules/gte')
 
 describe('gte', () => {
   test('returns true if the first value is greater than the second', () => {

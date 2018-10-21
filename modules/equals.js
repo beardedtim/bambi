@@ -1,5 +1,5 @@
-import curry from './curry'
+const curry = require("./curry");
 
-const equals = (a, b) => a === b
+const equals = (a, b) => a === b;
 
-export default curry(equals)
+module.exports = curry(equals);

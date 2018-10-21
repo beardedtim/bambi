@@ -1,4 +1,4 @@
-import T from '../../modules/T'
+const T = require('../../modules/T')
 
 describe('T', () => {
   test('a function that returns true', () => {

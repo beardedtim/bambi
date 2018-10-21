@@ -1,4 +1,4 @@
-import propOr from '../../modules/propOr'
+const propOr = require('../../modules/propOr')
 
 describe('propOr', () => {
   test('returns the value at the given key', () => {

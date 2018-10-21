@@ -1,4 +1,4 @@
-import assocPath from '../../modules/assocPath'
+const assocPath = require('../../modules/assocPath')
 
 describe('Associate Path', () => {
   test('associates a value to a nested path', () => {

@@ -1,5 +1,5 @@
-import curry from './curry'
+const curry = require("./curry");
 
-const ifElse = (pred, a, b, data) => pred(data) ? a(data) : b(data)
+const ifElse = (pred, a, b, data) => (pred(data) ? a(data) : b(data));
 
-export default curry(ifElse)
+module.exports = curry(ifElse);

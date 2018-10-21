@@ -1,12 +1,12 @@
-import curry from './curry'
-import lensPath from './lensPath'
+const curry = require("./curry");
+const lensPath = require("./lensPath");
 
 /**
  * Creates a lens at a given path
- * 
+ *
  * @param {string|number} key - The key to associate this lens with
  * @return {Lens}
  */
-export const lensProp = key => lensPath([key])
+const lensProp = key => lensPath([key]);
 
-export default curry(lensProp)
+module.exports = curry(lensProp);

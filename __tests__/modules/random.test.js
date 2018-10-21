@@ -1,4 +1,4 @@
-import random from '../../modules/random'
+const random = require('../../modules/random')
 
 describe('random', () => {
   test('returns a number between 1 and 100 without arguments', () => {
