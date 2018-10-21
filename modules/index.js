@@ -1,49 +1,50 @@
-export { default as adjust } from './adjust'
-export { default as always } from './always'
-export { default as assoc } from './assoc'
-export { default as assocPath } from './assocPath'
-export { default as both } from './both'
-export { default as clone } from './clone'
-export { default as compose } from './compose'
-export { default as composeP } from './composeP'
-export { default as cond } from './cond'
-export { default as curry } from './curry'
-export { default as deepClone } from './deepClone'
-export { default as deepMerge } from './deepMerge'
-export { default as defer } from './defer'
-export { default as dissoc } from './dissoc'
-export { default as equals } from './equals'
-export { default as filter } from './filter'
-export { default as gt } from './gt'
-export { default as gte } from './gte'
-export { default as head } from './head'
-export { default as identity } from './identity'
-export { default as inc } from './inc'
-export { default as insert } from './insert'
-export { default as is } from './is'
-export { default as isNil } from './isNil'
-export { default as lens } from './lens'
-export { default as lensPath } from './lensPath'
-export { default as lensProp } from './lensProp'
-export { default as map } from './map'
-export { default as not } from './not'
-export { default as omit } from './omit'
-export { default as once } from './once'
-export { default as path } from './path'
-export { default as pathEq } from './pathEq'
-export { default as pathOr } from './pathOr'
-export { default as pipe } from './pipe'
-export { default as pipeP } from './pipeP'
-export { default as prop } from './prop'
-export { default as propEq } from './propEq'
-export { default as propOr } from './propOr'
-export { default as random } from './random'
-export { default as reduce } from './reduce'
-export { default as reverse } from './reverse'
-export { default as set } from './set'
-export { default as T } from './T'
-export { default as tail } from './tail'
-export { default as uniq } from './uniq'
-export { default as uppercase } from './uppercase'
-export { default as view } from './view'
-export { default as zip } from './zip'
+module.exports = {};
+module.exports.adjust = require("./adjust");
+module.exports.always = require("./always");
+module.exports.assoc = require("./assoc");
+module.exports.assocPath = require("./assocPath");
+module.exports.both = require("./both");
+module.exports.clone = require("./clone");
+module.exports.compose = require("./compose");
+module.exports.composeP = require("./composeP");
+module.exports.cond = require("./cond");
+module.exports.curry = require("./curry");
+module.exports.deepClone = require("./deepClone");
+module.exports.deepMerge = require("./deepMerge");
+module.exports.defer = require("./defer");
+module.exports.dissoc = require("./dissoc");
+module.exports.equals = require("./equals");
+module.exports.filter = require("./filter");
+module.exports.gt = require("./gt");
+module.exports.gte = require("./gte");
+module.exports.head = require("./head");
+module.exports.identity = require("./identity");
+module.exports.inc = require("./inc");
+module.exports.insert = require("./insert");
+module.exports.is = require("./is");
+module.exports.isNil = require("./isNil");
+module.exports.lens = require("./lens");
+module.exports.lensPath = require("./lensPath");
+module.exports.lensProp = require("./lensProp");
+module.exports.map = require("./map");
+module.exports.not = require("./not");
+module.exports.omit = require("./omit");
+module.exports.once = require("./once");
+module.exports.path = require("./path");
+module.exports.pathEq = require("./pathEq");
+module.exports.pathOr = require("./pathOr");
+module.exports.pipe = require("./pipe");
+module.exports.pipeP = require("./pipeP");
+module.exports.prop = require("./prop");
+module.exports.propEq = require("./propEq");
+module.exports.propOr = require("./propOr");
+module.exports.random = require("./random");
+module.exports.reduce = require("./reduce");
+module.exports.reverse = require("./reverse");
+module.exports.set = require("./set");
+module.exports.T = require("./T");
+module.exports.tail = require("./tail");
+module.exports.uniq = require("./uniq");
+module.exports.uppercase = require("./uppercase");
+module.exports.view = require("./view");
+module.exports.zip = require("./zip");
