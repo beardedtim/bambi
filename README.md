@@ -10,6 +10,7 @@
 
 ## API
 
+* [add](#add)
 * [adjust](#adjust)
 * [always](#always)
 * [assoc](#assoc)
@@ -61,6 +62,17 @@
 * [uppercase](#uppercase)
 * [view](#view)
 * [zip](#zip)
+
+### add
+
+```
+add: number -> number -> number
+```
+
+```js
+add(1, 2) // 3
+add(1)(2) // 3
+```
 
 
 ### adjust
