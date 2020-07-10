@@ -1,6 +1,6 @@
 # bambi
 
-> Like a ram, but softer
+> Like a [ram](https://github.com/ramda/ramda), but softer
 
 ![Grrr....Serious](https://www.disneyclips.com/imagesnewb5/images/bambi_angry.gif)
 
