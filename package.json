@@ -12,7 +12,7 @@
     "cz-conventional-changelog": "^2.0.0",
     "jest": "^21.1.0",
     "prettier-standard": "^6.0.0",
-    "semantic-release": "^8.0.0",
+    "semantic-release": "^17.2.3",
     "semantic-release-cli": "^3.0.3",
     "standard": "^10.0.3"
   },
